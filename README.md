@@ -12,6 +12,24 @@ Perhaps one day this small script will grow into something bigger.
 Creates the following structure:
 
 ```
+MyProject
+├───.git
+├───cache
+├───docs
+├───logs
+├───src
+│   └───MyProject
+│       ├───database
+│       ├───images
+│       ├───products
+│       ├───users
+│       └───utils
+├───tests
+└───venv
+    ├───Include
+    ├───Lib
+    │   └───site-packages
+    └───Scripts
 ```
 Time of the structure creation: ~±500 ms
 
@@ -29,6 +47,7 @@ Time of the structure creation: ~±500 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
