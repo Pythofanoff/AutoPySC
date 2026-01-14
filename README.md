@@ -19,17 +19,27 @@ MyProject
 ├───logs
 ├───src
 │   └───MyProject
-│       ├───database
-│       ├───images
-│       ├───products
-│       ├───users
+│       └───database
+│            └───__init__
+│            └───connection
+│       └───images
+│       └───products
+│            └───__init__
+│            └───models
+│            └───services
+│       └───users
+│            └───__init__
+│            └───api
+│            └───models
+│            └───services
 │       └───utils
+│            └───__init__
+│            └───helpers
 ├───tests
+│   └───__init__
+│   └───test_products
+│   └───test_users
 └───venv
-    ├───Include
-    ├───Lib
-    │   └───site-packages
-    └───Scripts
 ```
 Time of the structure creation: ~±500 ms
 
@@ -47,6 +57,7 @@ Time of the structure creation: ~±500 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
