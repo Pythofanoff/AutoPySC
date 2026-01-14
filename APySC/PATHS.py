@@ -1,4 +1,13 @@
-NAME_OF_PROJECT = 'MyProject'
+NAME_OF_PROJECT = 'MyProject' # DEFAULT = 'MyProject'
+AUTHOR = 'DEV' # DEFAULT = 'DEV'
+VERSION = 'v0.0.1' # DEFAULT = 0.0.1
+DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
+
+VENV = 'pyvenv' # VENV = 'pyvenv'
+ARCHITURE = 'standart' # ARCHITURE = 'standart'
+
+REPLACE_EXISTS_FILE = False # DEFAULT = False
+REPLACE_EXISTS_FOLDERS = False # DEFAULT = False
 
 PATH_FLD = (
 'tests', 
@@ -41,10 +50,12 @@ f'src/{NAME_OF_PROJECT}/utils/__init__.py',
 f'src/{NAME_OF_PROJECT}/utils/helpers.py'
 )
 
-CNST_TXT = '''venv
+CNST_TXT = '''
+venv
 logs
 cache
 .env
 .vscode
 __pycache__
-*.pyc'''
+*.pyc
+'''
