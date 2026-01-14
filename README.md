@@ -21,18 +21,18 @@ MyProject
 ├───src
 │   └───MyProject
 │       └───database
-│            └───__init__.py
-│            └───connection.py
+│       │    └───__init__.py
+│       │    └───connection.py
 │       └───images
 │       └───products
-│            └───__init__.py
-│            └───models.py
-│            └───services.py
+│       │    └───__init__.py
+│       │    └───models.py
+│       │    └───services.py
 │       └───users
-│            └───__init__.py
-│            └───api.py
-│            └───models.py
-│            └───services.py
+│       │    └───__init__.py
+│       │    └───api.py
+│       │    └───models.py
+│       │    └───services.py
 │       └───utils
 │            └───__init__.py
 │            └───helpers.py
@@ -62,6 +62,7 @@ Time of the structure creation: ~±500 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
