@@ -53,7 +53,7 @@ Time of the structure creation: ~±500 ms
  
  or:
 
- Folder APySC, transport along the path:     ```.\python\python38-32\lib\site-packages```
+ Folder APySC, transport along the path:     ```.\python\python38-32\lib```
  
  2) In terminal: ```cd MyProject```
  
@@ -62,6 +62,7 @@ Time of the structure creation: ~±500 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
