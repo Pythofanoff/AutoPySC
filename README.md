@@ -1,3 +1,5 @@
+<img src='logo.svg'>
+
 `<DESCRIPTION>`
  
 v. of lib: 0.0.1
@@ -62,6 +64,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
