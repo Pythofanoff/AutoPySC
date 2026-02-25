@@ -2,16 +2,16 @@
 
 # `<DESCRIPTION>`
  
-v. of lib: 0.0.1
+v. of lib: ```0.0.1```
 
- AutoPySC or Auto Python Structure Creator - 
- This is a lightweight, simple library for creating a project tree.
+ **AutoPySC** or **Auto Python Structure Creator** - 
+ This is a **lightweight**, simple **library for creating a project tree**.
 
  This library was originally written for my own small, private projects, 
 but I decided to keep it publicly available. 
 Perhaps one day this small script will grow into something bigger.
 
-Creates the following structure:
+## Creates the following structure:
 
 ```
 MyProject
@@ -47,11 +47,10 @@ MyProject
              └───__init__.py
              └───test_products.py
              └───test_users.py
-
 ```
 Time of the structure creation: ~±200 ms
 
-## `<HOW TO LAUNCH?>`
+### `<HOW TO LAUNCH?>`
  1) In terminal: ```pip install APySC```
  
  or:
@@ -67,6 +66,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
