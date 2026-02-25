@@ -1,6 +1,6 @@
 <img src='logo.svg' weight=600 height=600>
 
-`<DESCRIPTION>`
+# `<DESCRIPTION>`
  
 v. of lib: 0.0.1
 
@@ -51,7 +51,7 @@ MyProject
 ```
 Time of the structure creation: ~±200 ms
 
-# `<HOW TO LAUNCH?>`
+## `<HOW TO LAUNCH?>`
  1) In terminal: ```pip install APySC```
  
  or:
@@ -67,6 +67,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
