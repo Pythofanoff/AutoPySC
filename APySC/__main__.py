@@ -69,7 +69,7 @@ def enum_paths(target: tuple):
 def main():
     try:
         if not VENV.lower().startswith('non'):
-            if VENV.lower().startswith('pyvenv'):
+            if VENV.lower().startswith('pyven'):
                 venv.create('venv') 
             else:
                 if not QUIET_LAUNCH:
@@ -109,7 +109,7 @@ if __name__ == "__main__":
     enum_paths(PATHS_FILES)
     
     main() 
-    
+
     if not QUIET_LAUNCH:
         print(''' 
         ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
