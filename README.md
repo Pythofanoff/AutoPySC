@@ -1,4 +1,4 @@
-<img src='logo.svg'>
+<img src='logo.svg' weight=200 height=200>
 
 `<DESCRIPTION>`
  
@@ -67,6 +67,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
