@@ -26,6 +26,10 @@ MyProject
 ├───docs
 │   └───index.md
 └───src
+    └───tests
+    │    └───__init__.py
+    │    └───test_products.py
+    │    └───test_users.py
     └───MyProject
         └───database
         │    └───__init__.py
@@ -41,12 +45,9 @@ MyProject
         │    └───models.py
         │    └───services.py
         └───utils
-        │    └───__init__.py
-        │    └───helpers.py
-        └───tests
              └───__init__.py
-             └───test_products.py
-             └───test_users.py
+             └───helpers.py
+
 ```
 Time of the structure creation: ~±200 ms
 
@@ -66,6 +67,7 @@ or:
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
