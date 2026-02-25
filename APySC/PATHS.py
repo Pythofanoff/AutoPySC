@@ -1,10 +1,10 @@
 NAME_OF_PROJECT = 'MyProject' # DEFAULT = 'MyProject'
 AUTHOR = 'DEV' # DEFAULT = 'DEV'
-VERSION = 'v0.0.1' # DEFAULT = 0.0.1
-DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
+VERSION = 'v0.0.1' # DEFAULT = 'v0.0.1'
+DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DEFAULT = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
 
-VENV = 'pyvenv' # VENV = 'pyvenv'
-ARCHITURE = 'standart' # ARCHITURE = 'standart'
+VENV = 'pyvenv' # DEFAULT = 'pyvenv'
+ARCHITURE = 'standart' # DEFAULT = 'standart'
 
 REPLACE_EXISTS_FILE = False # DEFAULT = False
 REPLACE_EXISTS_FOLDERS = False # DEFAULT = False
