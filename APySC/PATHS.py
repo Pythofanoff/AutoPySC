@@ -1,21 +1,22 @@
 NAME_OF_PROJECT = 'MyProject' # DEFAULT = 'MyProject'
 AUTHOR = 'DEV' # DEFAULT = 'DEV'
 VERSION = 'v0.0.1' # DEFAULT = 0.0.1
-DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
+DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DEFAULT = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
 
-VENV = 'pyvenv' # VENV = 'pyvenv'
-ARCHITURE = 'standart' # ARCHITURE = 'standart'
+VENV = 'pyvenv' # DEFAULT = 'pyvenv'
+ARCHITURE = 'standart' # DEFAULT = 'standart'
 
 REPLACE_EXISTS_FILE = False # DEFAULT = False
 REPLACE_EXISTS_FOLDERS = False # DEFAULT = False
+QUIET_LAUNCH = False # DEFAULT = False
 
 PATH_FLD = (
-'tests', 
 'cache', 
 'logs', 
 'docs',
 'src', 
 '.git',
+'src/tests', 
 f'src/{NAME_OF_PROJECT}', 
 f'src/{NAME_OF_PROJECT}/images', 
 f'src/{NAME_OF_PROJECT}/users', 
@@ -31,9 +32,9 @@ PATH_FLE = (
 'LICENSE', 
 '.env',
 'docs/index.md',
-'tests/__init__.py', 
-'tests/test_users.py', 
-'tests/test_products.py', 
+'src/tests/__init__.py', 
+'src/tests/test_users.py', 
+'src/tests/test_products.py', 
 f'src/{NAME_OF_PROJECT}/main.py', 
 f'src/{NAME_OF_PROJECT}/config.py', 
 f'src/{NAME_OF_PROJECT}/__init__.py', 

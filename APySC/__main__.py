@@ -3,7 +3,8 @@ try:
     from APySC.PATHS import * #PATH_FLD, PATH_FLE, REPLACE_EXISTS_FOLDERS, REPLACE_EXISTS_FILE, CNST_TXT
 
 except ImportError as e: 
-    print(f"Not enough trace dependencies: {e}")
+    if QUIET_LAUNCH != True:
+        print(f"Not enough trace dependencies: {e}")
    
 def enum_paths(target: tuple):
     global skipped, created, modified, start
@@ -14,15 +15,18 @@ def enum_paths(target: tuple):
             if os.path.exists(path):
                 if REPLACE_EXISTS_FOLDERS:
                     os.makedirs(path, exist_ok=True)
-                    print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+                    if QUIET_LAUNCH != True:
+                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
                     modified += 1
                 elif os.path.exists(path): 
                     # Папка уже существует
-                    print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
+                    if QUIET_LAUNCH != True:
+                        print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
                     skipped += 1
             else: 
                 os.makedirs(path, exist_ok=True)
-                print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')  
+                if QUIET_LAUNCH != True:
+                    print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')  
                 created += 1
         else: 
             # Создание файлов
@@ -30,23 +34,28 @@ def enum_paths(target: tuple):
                 if REPLACE_EXISTS_FILE: 
                     if path != '.gitignore':
                         open(path, "w", encoding="UTF-8").write('')
-                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+                        if QUIET_LAUNCH != True:
+                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
                         modified += 1
                     elif os.path.exists('./venv'):
                         open('.gitignore', "w", encoding="UTF-8").write(CNST_TXT)
-                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+                        if QUIET_LAUNCH != True:
+                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
                         modified += 1
                     elif not os.path.exists('./venv'): 
                         open('.gitignore', "w", encoding="UTF-8").write('')
-                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+                        if QUIET_LAUNCH != True:
+                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
                         modified += 1
                 else:
                     # Файл уже существует
-                    print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
+                    if QUIET_LAUNCH != True:
+                        print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
                     skipped += 1
             else:
                 open(path, "w", encoding="UTF-8").write('')
-                print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')
+                if QUIET_LAUNCH != True:
+                    print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')
                 created += 1
 
 if __name__ == "__main__":
@@ -57,48 +66,53 @@ if __name__ == "__main__":
     sep = '-' * 15 
 
     start = time.time() 
- 
-    print('''
-    ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
-    ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
-    ███████║██████╔╝░╚████╔╝░╚█████╗░██║░░╚═╝ 
-    ██╔══██║██╔═══╝░░░╚██╔╝░░░╚═══██╗██║░░██╗ 
-    ██║░░██║██║░░░░░░░░██║░░░██████╔╝╚█████╔╝ 
-    ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═════╝░░╚════╝░ 
     
-    ░██████╗████████╗░█████╗░██████╗░████████╗░░░░░░░░░ 
-    ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝░░░░░░░░░ 
-    ╚█████╗░░░░██║░░░███████║██████╔╝░░░██║░░░░░░░░░░░░ 
-    ░╚═══██╗░░░██║░░░██╔══██║██╔══██╗░░░██║░░░░░░░░░░░░ 
-    ██████╔╝░░░██║░░░██║░░██║██║░░██║░░░██║░░░██╗██╗██╗ 
-    ╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝╚═╝╚═╝
-    ''') 
+    if QUIET_LAUNCH != True:
+        print('''
+        ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
+        ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
+        ███████║██████╔╝░╚████╔╝░╚█████╗░██║░░╚═╝ 
+        ██╔══██║██╔═══╝░░░╚██╔╝░░░╚═══██╗██║░░██╗ 
+        ██║░░██║██║░░░░░░░░██║░░░██████╔╝╚█████╔╝ 
+        ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═════╝░░╚════╝░ 
+        
+        ░██████╗████████╗░█████╗░██████╗░████████╗░░░░░░░░░ 
+        ██╔════╝╚══██╔══╝██╔══██╗██╔══██╗╚══██╔══╝░░░░░░░░░ 
+        ╚█████╗░░░░██║░░░███████║██████╔╝░░░██║░░░░░░░░░░░░ 
+        ░╚═══██╗░░░██║░░░██╔══██║██╔══██╗░░░██║░░░░░░░░░░░░ 
+        ██████╔╝░░░██║░░░██║░░██║██║░░██║░░░██║░░░██╗██╗██╗ 
+        ╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝╚═╝╚═╝
+        ''') 
 
     try:
         if VENV.lower().startswith('pyvenv'):
             venv.create('venv') 
         else:
-            print(f"Unknown virtual enviroment: {VENV}")
+            if QUIET_LAUNCH != True:
+                print(f"Unknown virtual enviroment: {VENV}")
 
-    except: print("There is no following dependency: venv") 
+    except:
+        if QUIET_LAUNCH != True: 
+            print("There is no following dependency: venv") 
     
     enum_paths(PATH_FLD)
     enum_paths(PATH_FLE)
-
-    print(''' 
-    ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
-    ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
-    ███████║██████╔╝░╚████╔╝░╚█████╗░██║░░╚═╝ 
-    ██╔══██║██╔═══╝░░░╚██╔╝░░░╚═══██╗██║░░██╗ 
-    ██║░░██║██║░░░░░░░░██║░░░██████╔╝╚█████╔╝ 
-    ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═════╝░░╚════╝░ 
     
-    ███████╗██╗███╗░░██╗██╗░██████╗██╗░░██╗██╗ 
-    ██╔════╝██║████╗░██║██║██╔════╝██║░░██║██║ 
-    █████╗░░██║██╔██╗██║██║╚█████╗░███████║██║ 
-    ██╔══╝░░██║██║╚████║██║░╚═══██╗██╔══██║╚═╝ 
-    ██║░░░░░██║██║░╚███║██║██████╔╝██║░░██║██╗ 
-    ╚═╝░░░░░╚═╝╚═╝░░╚══╝╚═╝╚═════╝░╚═╝░░╚═╝╚═╝
-    ''') 
+    if QUIET_LAUNCH != True:
+        print(''' 
+        ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
+        ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
+        ███████║██████╔╝░╚████╔╝░╚█████╗░██║░░╚═╝ 
+        ██╔══██║██╔═══╝░░░╚██╔╝░░░╚═══██╗██║░░██╗ 
+        ██║░░██║██║░░░░░░░░██║░░░██████╔╝╚█████╔╝ 
+        ╚═╝░░╚═╝╚═╝░░░░░░░░╚═╝░░░╚═════╝░░╚════╝░ 
+        
+        ███████╗██╗███╗░░██╗██╗░██████╗██╗░░██╗██╗ 
+        ██╔════╝██║████╗░██║██║██╔════╝██║░░██║██║ 
+        █████╗░░██║██╔██╗██║██║╚█████╗░███████║██║ 
+        ██╔══╝░░██║██║╚████║██║░╚═══██╗██╔══██║╚═╝ 
+        ██║░░░░░██║██║░╚███║██║██████╔╝██║░░██║██╗ 
+        ╚═╝░░░░░╚═╝╚═╝░░╚══╝╚═╝╚═════╝░╚═╝░░╚═╝╚═╝
+        ''') 
 
     print(f"{sep} \n[Spent {round(time.time() - start, 3)}]: AutoPy created the project structure successfully: \nSkipped: {skipped}, \nCreated: {created}, \nModified: {modified}, \n{sep}")
