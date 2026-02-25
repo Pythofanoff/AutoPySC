@@ -59,11 +59,14 @@ Time of the structure creation: ~±200 ms
  
  2) In terminal: ```cd MyProject```
  
- 3) In terminal: ```python -m APySC```
+ 3) Configure file ```PATH.PY``` under the project 
+ 
+ 4) In terminal: ```python -m APySC```
 
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
