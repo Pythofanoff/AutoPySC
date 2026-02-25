@@ -31,10 +31,10 @@ MyProject
     │    └───test_products.py
     │    └───test_users.py
     └───MyProject
+        └───images
         └───database
         │    └───__init__.py
         │    └───connection.py
-        └───images
         └───products
         │    └───__init__.py
         │    └───models.py
@@ -67,6 +67,7 @@ or:
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
