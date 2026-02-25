@@ -10,7 +10,7 @@ REPLACE_EXISTS_FILE = False # DEFAULT = False
 REPLACE_EXISTS_FOLDERS = False # DEFAULT = False
 QUIET_LAUNCH = False # DEFAULT = False
 
-PATH_FLD = (
+PATHS_FOLDERS = (
 'cache', 
 'logs', 
 'docs',
@@ -25,7 +25,7 @@ f'src/{NAME_OF_PROJECT}/database',
 f'src/{NAME_OF_PROJECT}/utils'
 )
 
-PATH_FLE = (
+PATHS_FILES = (
 '.gitignore', 
 'README.md', 
 'pyproject.toml', 
@@ -51,7 +51,7 @@ f'src/{NAME_OF_PROJECT}/utils/__init__.py',
 f'src/{NAME_OF_PROJECT}/utils/helpers.py'
 )
 
-CNST_TXT = '''
+GITIGNORE = '''
 venv
 logs
 cache

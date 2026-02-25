@@ -1,31 +1,31 @@
 try: 
     import os, time, venv 
-    from APySC.PATHS import * #PATH_FLD, PATH_FLE, REPLACE_EXISTS_FOLDERS, REPLACE_EXISTS_FILE, CNST_TXT
+    from APySC.PATHS import * #PATHS_FOLDERS, PATHS_FILES, REPLACE_EXISTS_FOLDERS, REPLACE_EXISTS_FILE, GITIGNORE
 
 except ImportError as e: 
-    if QUIET_LAUNCH != True:
+    if not QUIET_LAUNCH:
         print(f"Not enough trace dependencies: {e}")
    
 def enum_paths(target: tuple):
     global skipped, created, modified, start
 
     for path in target:
-        if path in PATH_FLD:
+        if path in PATHS_FOLDERS:
             # Создание папок
             if os.path.exists(path):
                 if REPLACE_EXISTS_FOLDERS:
                     os.makedirs(path, exist_ok=True)
-                    if QUIET_LAUNCH != True:
+                    if not QUIET_LAUNCH:
                         print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
                     modified += 1
                 elif os.path.exists(path): 
                     # Папка уже существует
-                    if QUIET_LAUNCH != True:
+                    if not QUIET_LAUNCH:
                         print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
                     skipped += 1
             else: 
                 os.makedirs(path, exist_ok=True)
-                if QUIET_LAUNCH != True:
+                if not QUIET_LAUNCH:
                     print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')  
                 created += 1
         else: 
@@ -34,29 +34,50 @@ def enum_paths(target: tuple):
                 if REPLACE_EXISTS_FILE: 
                     if path != '.gitignore':
                         open(path, "w", encoding="UTF-8").write('')
-                        if QUIET_LAUNCH != True:
+                        if not QUIET_LAUNCH:
                             print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+
                         modified += 1
+
                     elif os.path.exists('./venv'):
-                        open('.gitignore', "w", encoding="UTF-8").write(CNST_TXT)
-                        if QUIET_LAUNCH != True:
+                        open('.gitignore', "w", encoding="UTF-8").write(GITIGNORE)
+                        if not QUIET_LAUNCH:
                             print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+
                         modified += 1
+
                     elif not os.path.exists('./venv'): 
                         open('.gitignore', "w", encoding="UTF-8").write('')
-                        if QUIET_LAUNCH != True:
+                        if not QUIET_LAUNCH:
                             print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+
                         modified += 1
                 else:
                     # Файл уже существует
-                    if QUIET_LAUNCH != True:
+                    if not QUIET_LAUNCH:
                         print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
+
                     skipped += 1
+
             else:
                 open(path, "w", encoding="UTF-8").write('')
-                if QUIET_LAUNCH != True:
+                if not QUIET_LAUNCH:
                     print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')
+
                 created += 1
+
+def main():
+    try:
+        if not VENV.lower().startswith('non'):
+            if VENV.lower().startswith('pyvenv'):
+                venv.create('venv') 
+            else:
+                if not QUIET_LAUNCH:
+                    print(f"Unknown virtual enviroment: {VENV}")
+    except:
+        if not QUIET_LAUNCH: 
+            print("There is no following dependency: venv") 
+
 
 if __name__ == "__main__":
     skipped = 0
@@ -67,7 +88,7 @@ if __name__ == "__main__":
 
     start = time.time() 
     
-    if QUIET_LAUNCH != True:
+    if not QUIET_LAUNCH:
         print('''
         ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
         ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
@@ -83,22 +104,13 @@ if __name__ == "__main__":
         ██████╔╝░░░██║░░░██║░░██║██║░░██║░░░██║░░░██╗██╗██╗ 
         ╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝╚═╝╚═╝
         ''') 
-
-    try:
-        if VENV.lower().startswith('pyvenv'):
-            venv.create('venv') 
-        else:
-            if QUIET_LAUNCH != True:
-                print(f"Unknown virtual enviroment: {VENV}")
-
-    except:
-        if QUIET_LAUNCH != True: 
-            print("There is no following dependency: venv") 
     
-    enum_paths(PATH_FLD)
-    enum_paths(PATH_FLE)
+    enum_paths(PATHS_FOLDERS)
+    enum_paths(PATHS_FILES)
     
-    if QUIET_LAUNCH != True:
+    main() 
+    
+    if not QUIET_LAUNCH:
         print(''' 
         ░█████╗░██████╗░██╗░░░██╗░██████╗░█████╗░ 
         ██╔══██╗██╔══██╗╚██╗░██╔╝██╔════╝██╔══██╗ 
