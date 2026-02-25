@@ -2,7 +2,7 @@
 
 # <DESCRIPTION>
  
-v. of lib: ```0.0.1```
+v. of lib: ```0.0.3```
 
  **AutoPySC** or **Auto Python Structure Creator** - 
  This is a **lightweight**, simple **library for creating a project tree**.
@@ -67,6 +67,7 @@ or:
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
