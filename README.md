@@ -36,12 +36,12 @@ MyProject
 │       │    └───models.py
 │       │    └───services.py
 │       └───utils
+│       │    └───__init__.py
+│       │    └───helpers.py
+│       └───tests
 │            └───__init__.py
-│            └───helpers.py
-├───tests
-│   └───__init__.py
-│   └───test_products.py
-│   └───test_users.py
+│            └───test_products.py
+│            └───test_users.py
 └───venv
 └───.gitignore
 └───LICENCE
@@ -64,6 +64,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
