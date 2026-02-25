@@ -15,38 +15,39 @@ Creates the following structure:
 
 ```
 MyProject
-├───.git
-├───cache
-├───docs
-│   └───index.md
-├───logs
-├───src
-│   └───MyProject
-│       └───database
-│       │    └───__init__.py
-│       │    └───connection.py
-│       └───images
-│       └───products
-│       │    └───__init__.py
-│       │    └───models.py
-│       │    └───services.py
-│       └───users
-│       │    └───__init__.py
-│       │    └───api.py
-│       │    └───models.py
-│       │    └───services.py
-│       └───utils
-│       │    └───__init__.py
-│       │    └───helpers.py
-│       └───tests
-│            └───__init__.py
-│            └───test_products.py
-│            └───test_users.py
+└───.git
+└───cache
+└───logs
 └───venv
 └───.gitignore
 └───LICENCE
 └───pyproject.toml
 └───README.MD
+├───docs
+│   └───index.md
+└───src
+    └───MyProject
+        └───database
+        │    └───__init__.py
+        │    └───connection.py
+        └───images
+        └───products
+        │    └───__init__.py
+        │    └───models.py
+        │    └───services.py
+        └───users
+        │    └───__init__.py
+        │    └───api.py
+        │    └───models.py
+        │    └───services.py
+        └───utils
+        │    └───__init__.py
+        │    └───helpers.py
+        └───tests
+             └───__init__.py
+             └───test_products.py
+             └───test_users.py
+
 ```
 Time of the structure creation: ~±200 ms
 
@@ -66,6 +67,7 @@ Time of the structure creation: ~±200 ms
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
