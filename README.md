@@ -52,11 +52,7 @@ MyProject
 Time of the structure creation: ~±200 ms
 
 ### <HOW TO LAUNCH?>
-1) In terminal: ```pip install APySC```
- 
-or:
-
-1) Folder APySC, transport along the path:     ```.\python\python38-32\lib```
+1) In terminal: ```pip install APySC``` or Folder APySC, transport along the path:     ```.\python\python38-32\lib```
  
 2) In terminal: ```cd MyProject```
  
@@ -67,6 +63,7 @@ or:
 
 
 `<CODE BY PYTHOFANOFF>`
+
 
 
 
