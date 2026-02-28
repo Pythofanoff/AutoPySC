@@ -2,7 +2,7 @@
 
 # <DESCRIPTION>
  
-v. of lib: ```0.0.3```
+v. of lib: `0.0.3`
 
  **AutoPySC** or **Auto Python Structure Creator** - 
  This is a **lightweight**, simple **library for creating a project tree**.
@@ -52,13 +52,13 @@ MyProject
 Time of the structure creation: ~±200 ms
 
 ### <HOW TO LAUNCH?>
-1) In terminal: ```pip install APySC``` or Folder APySC, transport along the path:     ```.\python\python38-32\lib```
+1) In terminal: `pip install APySC` or Folder APySC, transport along the path:     `.\python\python38-32\lib`
  
-2) In terminal: ```cd MyProject```
+2) In terminal: `cd MyProject`
  
-3) Configure file ```PATH.PY``` under the project 
+3) Configure file `PATH.PY` under the project 
  
-4) In terminal: ```apysc``` or ```python -m APySC```
+4) In terminal: `apysc` or `python -m APySC`
 
 
 
