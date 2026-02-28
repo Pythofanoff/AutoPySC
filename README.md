@@ -58,7 +58,7 @@ Time of the structure creation: ~±200 ms
  
 3) Configure file ```PATH.PY``` under the project 
  
-4) In terminal: ```python -m APySC```
+4) In terminal: ```apysc or python -m APySC```
 
 
 
