@@ -1,10 +1,10 @@
 try: 
     import os, time, venv 
     from .paths import * # PATHS_FOLDERS, PATHS_FILES, REPLACE_EXISTS_FOLDERS, REPLACE_EXISTS_FILE, GITIGNORE
+    from pathlib import Path
 
 except ImportError as e: 
-    if not QUIET_LAUNCH:
-        print(f"Not enough trace dependencies: {e}")
+    print(f"Not enough trace dependencies: {e}")
    
 def enum_paths(target: tuple):
     global skipped, created, modified, start
@@ -30,41 +30,56 @@ def enum_paths(target: tuple):
                 created += 1
         else: 
             # Создание файлов
-            if os.path.exists(path):
-                if REPLACE_EXISTS_FILE: 
-                    if path != '.gitignore':
-                        open(path, "w", encoding="UTF-8").write('')
-                        if not QUIET_LAUNCH:
-                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
-
-                        modified += 1
-
-                    elif os.path.exists('./venv'):
-                        open('.gitignore', "w", encoding="UTF-8").write(GITIGNORE)
-                        if not QUIET_LAUNCH:
-                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
-
-                        modified += 1
-
-                    elif not os.path.exists('./venv'): 
-                        open('.gitignore', "w", encoding="UTF-8").write('')
-                        if not QUIET_LAUNCH:
-                            print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
-
-                        modified += 1
-                else:
-                    # Файл уже существует
-                    if not QUIET_LAUNCH:
-                        print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
-
-                    skipped += 1
-
-            else:
-                open(path, "w", encoding="UTF-8").write('')
+            if os.path.exists(path) and not REPLACE_EXISTS_FILE:
+                # Файл уже существует
                 if not QUIET_LAUNCH:
-                    print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')
+                    print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
 
-                created += 1
+                skipped += 1
+    
+            else:
+                if path == '.gitignore':
+                    Path(path).write_text(GITIGNORE, encoding='utf-8')
+
+                elif path == 'LICENSE':
+                    if LICENSE != '':
+                        if LICENSE.lower() == 'mit':
+                            Path(path).write_text(MIT, encoding='utf-8')
+
+                    else: Path(path).write_text('', encoding='utf-8')
+                
+                elif path == 'README.md':
+                    if DESCRIPTION != '':
+                        open(path, "w", encoding="utf-8").write(DESCRIPTION) 
+                            
+                    else: Path(path).write_text('', encoding='utf-8')
+
+                else:
+                    import toml
+                
+                    Path(path).write_text('', encoding='utf-8')
+                    
+                    try:
+                        s = toml.dumps(TOML)
+                        Path("pyproject.toml").write_text(s, encoding="utf-8")
+                        print(f'[Spent: {round(time.time() - start, 3)}]: Create pyproject.toml')
+                    except Exception as e:
+                        print(e)
+                        
+                        if not QUIET_LAUNCH:
+                            print(f"[Spent: {round(time.time() - start, 3)}]: The following files already exist: Create {path} <- SKIP")
+
+                if not os.path.exists(path):
+                    if not QUIET_LAUNCH:
+                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path}')
+
+                    created += 1
+
+                if os.path.exists(path):
+                    if not QUIET_LAUNCH:
+                        print(f'[Spent: {round(time.time() - start, 3)}]: Create {path} <- EDIT')
+
+                    modified += 1
 
 def main():
     try:

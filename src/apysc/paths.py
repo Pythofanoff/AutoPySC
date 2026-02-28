@@ -3,6 +3,9 @@ AUTHOR = 'DEV' # DEFAULT = 'DEV'
 VERSION = 'v0.0.1' # DEFAULT = 0.0.1
 DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DEFAULT = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
 LICENSE = 'MIT' # DEFAULT = 'MIT' 
+EMAIL = 'youremail@example.com' # DEFAULT = 'youremail@example.com'
+HOMEPAGE = f'https://github.com/{AUTHOR}' # Default = f'https://github.com/{AUTHOR}'
+REPOSITORY = f'https://github.com/{AUTHOR}/{NAME_OF_PROJECT}' # Default = f'https://github.com/{AUTHOR}/{NAME_OF_PROJECT}'
 
 LANGUAGE = 'py' # DEFAULT = 'py'
 VENV = 'pyvenv' # DEFAULT = 'pyvenv'
@@ -10,7 +13,7 @@ ARCHITURE = 'standart' # DEFAULT = 'standart'
 
 REPLACE_EXISTS_FILE = False # DEFAULT = False
 REPLACE_EXISTS_FOLDERS = False # DEFAULT = False
-QUIET_LAUNCH = False # DEFAULT = False
+QUIET_LAUNCH = False # DEFAULT = False 
 
 PATHS_FOLDERS = (
 'cache', 
@@ -30,7 +33,6 @@ f'src/{NAME_OF_PROJECT}/utils'
 PATHS_FILES = (
 '.gitignore', 
 'README.md', 
-'pyproject.toml', 
 'LICENSE', 
 '.env',
 'docs/index.md',
@@ -53,8 +55,7 @@ f'src/{NAME_OF_PROJECT}/utils/__init__.py',
 f'src/{NAME_OF_PROJECT}/utils/helpers.py'
 )
 
-GITIGNORE = '''
-venv
+GITIGNORE = '''venv
 logs
 cache
 .env
@@ -62,3 +63,30 @@ cache
 __pycache__
 *.pyc
 '''
+
+from datetime import date
+
+MIT = f'''Copyright (c) {date.today().year} {AUTHOR}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+'''
+
+TOML = {
+    "project": {
+        "name": NAME_OF_PROJECT,
+        "version": VERSION,
+        "description": DESCRIPTION,
+        "readme": "README.md",
+        "requires-python": ">=3.8",
+        "license": {"file": "LICENSE"},
+        "authors": [{"name": AUTHOR, "email": EMAIL}],
+        "urls": {
+            "Homepage": HOMEPAGE,
+            "Repository": REPOSITORY,
+        },
+    }
+}
