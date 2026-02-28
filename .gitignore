@@ -1,2 +1,6 @@
-APySC/tests
-APySC/APySC/__pycache__
+.env
+__pycache__
+apysc.egg-info
+*.pyc
+src\apysc.egg-info
+src\apysc\__pycache__

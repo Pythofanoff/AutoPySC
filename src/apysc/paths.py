@@ -2,7 +2,9 @@ NAME_OF_PROJECT = 'MyProject' # DEFAULT = 'MyProject'
 AUTHOR = 'DEV' # DEFAULT = 'DEV'
 VERSION = 'v0.0.1' # DEFAULT = 0.0.1
 DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DEFAULT = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
+LICENSE = 'MIT' # DEFAULT = 'MIT' 
 
+LANGUAGE = 'py' # DEFAULT = 'py'
 VENV = 'pyvenv' # DEFAULT = 'pyvenv'
 ARCHITURE = 'standart' # DEFAULT = 'standart'
 

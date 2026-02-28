@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apysc"
+version = "0.0.3"
+description = "Auto Python structure creator"
+readme = "README.md"
+requires-python = ">=3.8"
+
+license = { file = "LICENSE" }
+
+authors = [
+  { name = "Pythofanoff", email = "you@example.com" }
+]
+
+[project.urls]
+Homepage = "github.com/Pythofanoff"
+Repository = "github.com/Pythofanoff/apysc"
+
+[tool.setuptools]
+py-modules = ["cli", "PATHS"]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["apysc*"]
+
+[project.scripts]
+apysc = "apysc.cli:main"  # если хотите запускать cli.main
+
