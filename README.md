@@ -63,6 +63,8 @@ MyProject
 #### **`<Other commands>`**
 `apysc version` - Show actual version for library
 
+More information [here](src=docs/getting_start.md)
+
 `<CODE BY PYTHOFANOFF>`
 
 
