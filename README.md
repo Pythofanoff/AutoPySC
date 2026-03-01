@@ -63,7 +63,7 @@ MyProject
 #### **`<Other commands>`**
 `apysc version` - Show actual version for library
 
-More information ![here](href=https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
+More information:![here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
 
 `<CODE BY PYTHOFANOFF>`
 
