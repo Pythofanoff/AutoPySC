@@ -11,8 +11,9 @@ v. of lib: `0.0.3`
 but I decided to keep it publicly available. 
 Perhaps one day this small script will grow into something bigger.
 
-This library is still in the testing stage, problems are possible, please write about any errors in github issues [Click](https://github.com/Pythofanoff/AutoPySC/issues)
-## Creates the following structure:
+>[!Warning]
+>This library is still in the testing stage, >problems are possible, please write about >any errors in github issues >[Click](https://github.com/Pythofanoff/AutoPySC/issues)
+>## Creates the following structure:
 
 ```
 MyProject
@@ -60,7 +61,7 @@ MyProject
 4) In terminal: `apysc start` or `python -m APySC`
 
 #### **`<Other commands>`**
-`apysc version` - Show actual version fo library
+`apysc version` - Show actual version for library
 
 `<CODE BY PYTHOFANOFF>`
 
