@@ -12,9 +12,9 @@ but I decided to keep it publicly available.
 Perhaps one day this small script will grow into something bigger.
 
 >[!Warning]
->This library is still in the testing stage, problems are possible, please write about any errors in github issues [Click](https://github.com/Pythofanoff/AutoPySC/issues)
+>__This library is still in the testing stage, problems are possible, please write about any errors in github issues__ [Click](https://github.com/Pythofanoff/AutoPySC/issues)
 
-## Creates the following structure:
+## **Creates the following structure**:
 ```
 MyProject
 └───.git
@@ -52,20 +52,20 @@ MyProject
 ```
 
 ### <HOW TO LAUNCH?>
-1) In terminal: `pip install APySC` or Folder APySC, transport along the path: `.\python\python38-32\lib`
+1) **In terminal**: `pip install APySC` or Folder APySC, transport along the path: `.\python\python38-32\lib`
  
-2) In terminal: `cd MyProject`
+2) **In terminal**: `cd MyProject`
  
-3) Configure file `PATH.PY` under the project: `apysc open` 
+3) **Configure file** `PATH.PY` under the project: `apysc open` 
  
-4) In terminal: `apysc start` or `python -m APySC`
+4) **In terminal**: `apysc start` or `python -m APySC`
 
 #### **`<Other commands>`**
 `apysc version` - Show actual version for library
 
-More information:![here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
+**More information**:![here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
 
-`<CODE BY PYTHOFANOFF>`
+**`<CODE BY PYTHOFANOFF>`**
 
 
 
