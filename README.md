@@ -13,8 +13,8 @@ Perhaps one day this small script will grow into something bigger.
 
 >[!Warning]
 >This library is still in the testing stage, >problems are possible, please write about >any errors in github issues >[Click](https://github.com/Pythofanoff/AutoPySC/issues)
->## Creates the following structure:
 
+## Creates the following structure:
 ```
 MyProject
 └───.git
