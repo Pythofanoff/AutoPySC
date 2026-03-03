@@ -61,7 +61,7 @@ MyProject
  
 4) **In terminal**: `apysc start` or `python -m APySC`
 
-#### **`<Other commands>`**
+#### <Other commands>
 `apysc version` - Show actual version for library
 
 **More information**:![here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
