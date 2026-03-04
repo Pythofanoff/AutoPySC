@@ -28,5 +28,4 @@ where = ["src"]
 include = ["apysc*"]
 
 [project.scripts]
-apysc = "apysc.cli:main"  # если хотите запускать cli.main
-
+apysc = "apysc.cli:cli"

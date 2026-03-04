@@ -2,7 +2,7 @@
 
 # <DESCRIPTION>
  
-v. of lib: ```0.0.3```
+v. of lib: `0.0.3`
 
  **AutoPySC** or **Auto Python Structure Creator** - 
  This is a **lightweight**, simple **library for creating a project tree**.
@@ -11,7 +11,10 @@ v. of lib: ```0.0.3```
 but I decided to keep it publicly available. 
 Perhaps one day this small script will grow into something bigger.
 
-## Creates the following structure:
+>[!Warning]
+>__This library is still in the testing stage, problems are possible, please write about any errors in github issues__ [Click](https://github.com/Pythofanoff/AutoPySC/issues)
+
+## **Creates the following structure**:
 
 ```
 MyProject
@@ -47,22 +50,24 @@ MyProject
         └───utils
              └───__init__.py
              └───helpers.py
-
 ```
-Time of the structure creation: ~±200 ms
 
 ### <HOW TO LAUNCH?>
-1) In terminal: ```pip install APySC``` or Folder APySC, transport along the path:     ```.\python\python38-32\lib```
+1) **In terminal**: `pip install APySC` or Folder APySC, transport along the path: `.\python\python38-32\lib`
  
-2) In terminal: ```cd MyProject```
+2) **In terminal**: `cd MyProject`
  
-3) Configure file ```PATH.PY``` under the project 
+3) **Configure file** `PATH.PY` under the project: `apysc open` 
  
-4) In terminal: ```python -m APySC```
+4) **In terminal**: `apysc start` or `python -m APySC`
 
+#### <Other commands>
 
+`apysc version` - Show actual version for library
 
-`<CODE BY PYTHOFANOFF>`
+**More information**:![here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
+
+**`<CODE BY PYTHOFANOFF>`**
 
 
 
