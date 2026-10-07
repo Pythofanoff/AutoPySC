@@ -18,6 +18,6 @@ LANGUAGE = 'py' # DEFAULT = 'py'
 VENV = 'pyvenv' # DEFAULT = 'pyvenv'
 ARCHITECTURE = 'standart' # DEFAULT = 'standart'
 
-REPLACE_EXISTS_FILE = True # DEFAULT = False
+REPLACE_EXISTS_FILE = 1 # DEFAULT = False | 0 
 
-QUIET_LAUNCH = False # DEFAULT = False
+QUIET_LAUNCH = False # DEFAULT = False | 0 

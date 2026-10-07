@@ -29,11 +29,12 @@ from .paths import (
 init(autoreset=True)
 
 class Builder:
-    DOT_WIDTH = 40
+    DOT_WIDTH = 46
     def __init__(self):
         self.skipped = 0
         self.created = 0
         self.modified = 0
+        self.total = 0
 
         current_time = datetime.now().strftime("%H:%M:%S:%m")
 
@@ -41,33 +42,49 @@ class Builder:
         with config_path.open(encoding="utf-8") as f:
             self.cfg = json.load(f)
 
-        print(f"\r[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTBLACK_EX}Virtual enviroments... ", end='', flush=True)
+        print(f"\r[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTBLACK_EX}Virtual enviroments{Fore.RESET}... ", end='', flush=True)
         self.builder_venv()
-        print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTMAGENTA_EX}folders...")
+        print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTMAGENTA_EX}folders{Fore.RESET}...")
         self.builder_folders()
-        print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTCYAN_EX}files...")
+        print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTCYAN_EX}files{Fore.RESET}...")
         self.builder_files()
 
     def builder_folders(self):
         FOLDERS_PATHS = self.cfg[LANGUAGE][ARCHITECTURE]["folders_path"]
         
         for folder_path in FOLDERS_PATHS:
+            self.total += 1
+
             current_time = datetime.now().strftime("%H:%M:%S:%m")
             
             folder_path = folder_path.replace("{NAME_OF_PROJECT}", NAME_OF_PROJECT)
+            is_folder_exists = os.path.exists(folder_path)
+            
+            if is_folder_exists:
+                print(
+                    f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
+                    f"Folder already exists: "
+                    f"{Fore.LIGHTMAGENTA_EX}{folder_path + ' ' f'{Fore.RESET}':.<{self.DOT_WIDTH-2}} "
+                    f"{Fore.LIGHTRED_EX}SKIPPED"
+                )
+                self.skipped += 1
+                continue
 
             os.makedirs(folder_path, exist_ok=True)
             print(
                 f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
-                f"{Fore.LIGHTMAGENTA_EX}{folder_path + ' ':.<{self.DOT_WIDTH}} "
+                f"{Fore.LIGHTMAGENTA_EX}{folder_path + ' ' f'{Fore.RESET}':.<{self.DOT_WIDTH}} "
                 f"{Fore.LIGHTGREEN_EX}CREATED"
             )
             self.created += 1
+
 
     def builder_files(self):
         FILES_PATHS = self.cfg[LANGUAGE][ARCHITECTURE]["files_path"]
 
         for file_path in FILES_PATHS:
+            self.total += 1
+
             current_time = datetime.now().strftime("%H:%M:%S:%m")
             file_path = file_path.replace("{NAME_OF_PROJECT}", NAME_OF_PROJECT)
 
@@ -76,8 +93,8 @@ class Builder:
             if is_file_exists and not REPLACE_EXISTS_FILE:
                 print(
                     f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
-                    f"{Fore.LIGHTCYAN_EX}File{Fore.RESET} already {Fore.LIGHTRED_EX}exists{Fore.RESET}: "
-                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ':.<{self.DOT_WIDTH}} "
+                    f"File already exists: "
+                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ' f'{Fore.RESET}':.<{self.DOT_WIDTH}} "
                     f"{Fore.LIGHTRED_EX}SKIPPED"
                 )
                 self.skipped += 1
@@ -89,6 +106,8 @@ class Builder:
                 if not LICENSE.isspace():
                     if LICENSE.lower() == "mit":
                         Path(file_path).write_text(MIT, encoding="utf-8")
+                    elif LICENSE.lower() == "ApacheLicenseVersion2":
+                        Path(file_path).write_text(ApacheLicenseVersion2, encoding="utf-8")
                 else: Path(file_path).write_text("", encoding="utf-8")
             elif file_path == "README.md":
                 if not DESCRIPTION.isspace():
@@ -96,35 +115,27 @@ class Builder:
                 else: Path(file_path).write_text("", encoding="utf-8")
             elif file_path == "pyproject.toml":
                 Path(file_path).write_text("", encoding="utf-8")        
-                try:
-                    s = toml.dumps(TOML)
-                    Path("pyproject.toml").write_text(s, encoding="utf-8")
-                except Exception as e:
-                    print(e)
-                    print(
-                        f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
-                        f"{Fore.LIGHTCYAN_EX}File{Fore.RESET} already {Fore.LIGHTRED_EX}exists{Fore.RESET}: "
-                        f"{Fore.LIGHTCYAN_EX}{file_path + ' ':.<{self.DOT_WIDTH}} "
-                        f"{Fore.LIGHTRED_EX}SKIPPED"
-                    ) 
+                s = toml.dumps(TOML)
+                Path("pyproject.toml").write_text(s, encoding="utf-8")  
             else:
                 Path(file_path).write_text("", encoding="utf-8")        
 
             if is_file_exists and REPLACE_EXISTS_FILE:
                 print(
                     f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
-                    f"{Fore.LIGHTCYAN_EX}File{Fore.RESET} already {Fore.LIGHTYELLOW_EX}exists{Fore.RESET}: "
-                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ':.<{self.DOT_WIDTH}} " 
+                    f"File already exists: "
+                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ' f'{Fore.RESET}':.<{self.DOT_WIDTH}} " 
                     f"{Fore.LIGHTYELLOW_EX}MODIFIED"
                 )
                 self.modified += 1    
             elif not is_file_exists:
                 print(
                     f"└───[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
-                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ':.<{self.DOT_WIDTH}} "
+                    f"{Fore.LIGHTCYAN_EX}{file_path + ' ' f'{Fore.RESET}':.<{self.DOT_WIDTH}} "
                     f"{Fore.LIGHTGREEN_EX}CREATED"
                 )
                 self.created += 1
+
 
     def builder_venv(self):
         if VENV.lower().startswith("pyven"):
@@ -163,18 +174,23 @@ _  __/   __/ /  _  /|  / __/ /  ____/ /_  __  /
 /_/      /___/  /_/ |_/  /___/  /____/ /_/ /_/   
     """) 
 
+    width = 74
     spent_time = round(time.time() - start, 3)
-    print(
-        f"\n{sep}\n"
-        f"# "
-        f"{Fore.LIGHTGREEN_EX}BUILD SUCCEFULL{Fore.RESET} "
-        f"in {Fore.LIGHTMAGENTA_EX}{spent_time}ms{Fore.RESET}"
-        f"{' ' * (70 - len(f'{Fore.LIGHTGREEN_EX}BUILD SUCCEFULL') - 1)}#"
+    status = f"BUILD SUCCESSFUL in {spent_time}ms"
+    colored_status = (
+        f"{Fore.LIGHTGREEN_EX}BUILD SUCCESSFUL{Style.RESET_ALL} in "
+        f"{Fore.LIGHTMAGENTA_EX}{spent_time}ms{Style.RESET_ALL}"
     )
-    print(f"""
-#----------------------------------------------------------------------------#
-# {Fore.LIGHTGREEN_EX}{f'CREATED: {builder.created} files':<75}{Fore.RESET}#\n
-# {Fore.LIGHTRED_EX}{f'SKIPPED: {builder.skipped} files':<75}{Fore.RESET}#\n
-# {Fore.LIGHTYELLOW_EX}{f'MODIFIED: {builder.modified} files':<75}{Fore.RESET}#\n                                                                
-##############################################################################
-""")    
+    print(f"\n{sep}\n# {colored_status}{' ' * (width - len(status))} #")
+
+    def row(label, value, color):
+        text = f"{label}: {value} files"
+        colored_text = f"{color}{label}{Style.RESET_ALL}: {Fore.LIGHTMAGENTA_EX}{value}{Style.RESET_ALL} files"
+        return f"# {colored_text}{' ' * (width - len(text))} #"
+
+    print("#" + "-" * (width + 2) + "#")
+    print(row("CREATED", builder.created, Fore.LIGHTGREEN_EX))
+    print(row("SKIPPED", builder.skipped, Fore.LIGHTRED_EX))
+    print(row("MODIFIED", builder.modified, Fore.LIGHTYELLOW_EX))
+    print(row("TOTAL", builder.total, Fore.RESET))
+    print("#" * (width + 4))

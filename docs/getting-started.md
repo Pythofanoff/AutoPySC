@@ -39,6 +39,8 @@
 **`pip install apysc`** <br>
 or: <br>
 **`python -m pip install apysc`**
+or:
+**`.\build.bat`**
 
 > [!IMPORTANT]
 > **Tip: На момент написания 01.03.2026 я ещё не выложил библиотеку на PyPi.org, но, возможно когда уже вы будете читать этот файл, она уже будет загружена на PyPi.**
