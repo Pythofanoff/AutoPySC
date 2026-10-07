@@ -1,0 +1,9 @@
+{
+    "ERRORS": "RED",
+    "WARNINGS": "YELLOW",
+    "INFO": "WHITE",
+    "TIME": "WHITE",
+    "REMAINING": "MAGENTA",
+    "FILES": "CYAN",
+    "FOLDERS": "MAGENTA" 
+}
