@@ -12,9 +12,9 @@ Perhaps one day this small script will grow into something bigger.
 >[!Warning]
 >**This library is still in the testing stage, problems are possible, please write about any errors in github issues** [Click](https://github.com/Pythofanoff/AutoPySC/issues)
 
-## **Creates the following structure**
+## **Creates the following structure (.py, "standart")**
 
-```
+``` txt
 MyProject
 └───.git
 └───cache
@@ -52,14 +52,15 @@ MyProject
 
 ### <HOW TO LAUNCH?>
 
-1) **In terminal**: `pip install APySC` or Folder APySC, transport along the path: `.\python\python38-32\lib`
+1) **In terminal**: `pip install apysc` or Folder APySC, transport along the path: `\python\python38-32\lib`.
 2) **In terminal**: `cd MyProject`;
 3) **Configure file** `PATH.PY` under the project: `apysc open`;
-4) **In terminal**: `apysc start` or `python -m apysc`.
+4) **In terminal**: `apysc build` or `python -m apysc`.
 
-#### <Other commands>
+### <OTHER COMMANDS?>
 
-`apysc version` - Show actual version for library
+`apysc version` - Show actual version for library; <br>
+`apysc` - CLI-tool.
 
 **More information**: [Here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
 

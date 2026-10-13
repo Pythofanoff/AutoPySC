@@ -30,11 +30,12 @@ init(autoreset=True)
 
 class Builder:
     DOT_WIDTH = 46
+
     def __init__(self):
-        self.skipped = 0
-        self.created = 0
-        self.modified = 0
-        self.total = 0
+        self.skipped: int = 0
+        self.created: int = 0
+        self.modified: int = 0
+        self.total: int = 0
 
         current_time = datetime.now().strftime("%H:%M:%S:%m")
 
@@ -42,12 +43,22 @@ class Builder:
         with config_path.open(encoding="utf-8") as f:
             self.cfg = json.load(f)
 
-        print(f"\r[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTBLACK_EX}Virtual enviroments{Fore.RESET}... ", end='', flush=True)
+        label = "virtual environments "
+        padded_label = f"{label + Fore.RESET:.<62}"
+
+        print(
+            f"\r[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: "
+            f"{Fore.RESET}Creating {Fore.LIGHTBLACK_EX}{padded_label}{Fore.RESET} ",
+            end="",
+            flush=True,
+        )
+
         self.builder_venv()
         print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTMAGENTA_EX}folders{Fore.RESET}...")
         self.builder_folders()
         print(f"[ {Fore.LIGHTBLUE_EX}{current_time}{Fore.RESET} ]: Creating {Fore.LIGHTCYAN_EX}files{Fore.RESET}...")
         self.builder_files()
+
 
     def builder_folders(self):
         FOLDERS_PATHS = self.cfg[LANGUAGE][ARCHITECTURE]["folders_path"]
@@ -138,9 +149,9 @@ class Builder:
 
 
     def builder_venv(self):
-        if VENV.lower().startswith("pyven"):
+        if VENV.lower().startswith("pyv"):
             venv.create("venv")     
-        elif VENV.lower().startswith("poetry"):
+        elif VENV.lower().startswith("poet"):
             pass 
         else:
             print(f'{Fore.LIGHTRED_EX}ERROR')
@@ -155,7 +166,7 @@ if __name__ == "__main__":
     start = time.time() 
     
     if not QUIET_LAUNCH:
-        print(f"""{Fore.LIGHTCYAN_EX}
+        print(fr"""{Fore.LIGHTCYAN_EX}
 _________________  _________________     
 ___    |__  __ \ \/ /_  ___/_  ____/    
 __  /| |_  /_/ /_  /_____ \_  /       
@@ -166,7 +177,7 @@ _  ___ |  ____/_  / ____/ // /___
     builder = Builder()
 
     if not QUIET_LAUNCH:
-        print(f"""{Fore.LIGHTCYAN_EX}
+        print(fr"""{Fore.LIGHTCYAN_EX}
 _____________________   _____________________  __
 ___  ____/___  _/__  | / /___  _/_  ___/__  / / /
 __  /_    __  / __   |/ / __  / _____ \__  /_/ / 

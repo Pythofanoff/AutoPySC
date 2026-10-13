@@ -1,18 +1,23 @@
-from importlib.metadata import version, PackageNotFoundError
+from importlib.metadata import PackageNotFoundError, version
+
 import click
 
 def get_version():
     try:
         return version('apysc')
     except PackageNotFoundError:
-        return '0.0.3'
+        return '0.0.4'
 
-@click.group()
-def cli():
-    pass 
+@click.group(invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
+    from .cli_menu import CLI
+    
+    if ctx.invoked_subcommand is None:
+        CLI()
 
 @cli.command()
-def start():    
+def build():    
     import runpy
     
     runpy.run_module("apysc", run_name="__main__", alter_sys=True)
@@ -24,7 +29,9 @@ def version_cmd():
 @cli.command(name='open', help='Open file config: apysc open')
 @click.option('-cfg', '--cfg', 'cfg_path', default='paths.py')
 def open_cfg(cfg_path):
-    import os, sys, importlib
+    import importlib
+    import os
+    import sys
     from pathlib import Path
     
     try:
@@ -51,4 +58,3 @@ def open_cfg(cfg_path):
     except Exception as e:
         click.echo(f"Не удалось открыть {p}: {e}", err=True)
         raise
-
