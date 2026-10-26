@@ -1,0 +1,53 @@
+{
+    "basic": {
+        "INFO": "WHITE",
+        "BASE_COLOR": "LIGHTWHITE_EX",
+        "TIME": "LIGHTBLUE_EX",
+        "FILES": "LIGHTCYAN_EX",
+        "ERRORS": "LIGHTRED_EX",
+        "SKIPPED": "LIGHTRED_EX",
+        "CREATED": "LIGHTGREEN_EX",
+        "FOLDERS": "LIGHTMAGENTA_EX",
+        "WARNINGS": "LIGHTYELLOW_EX",
+        "MODIFIED": "LIGHTYELLOW_EX",
+        "REMAINING": "LIGHTMAGENTA_EX",
+        "LOGO": "LIGHTCYAN_EX",
+        "VIRTUAL_ENVIROMENT": "LIGHTBLACK_EX",
+        "TOTAL": "RESET"
+    },
+
+    "bloody": {
+        "INFO": "RED",
+        "BASE_COLOR": "RED",
+        "TIME": "RED",
+        "FILES": "LIGHTRED_EX",
+        "ERRORS": "LIGHTRED_EX",
+        "SKIPPED": "LIGHTRED_EX",
+        "CREATED": "LIGHTRED_EX",
+        "FOLDERS": "LIGHTRED_EX",
+        "WARNINGS": "RED",
+        "MODIFIED": "LIGHTRED_EX",
+        "REMAINING": "RED",
+        "LOGO": "LIGHTRED_EX",
+        "VIRTUAL_ENVIROMENT": "RED",
+        "TOTAL": "RED"
+    },
+    
+    "night": {
+        "INFO": "BLUE",
+        "BASE_COLOR": "BLUE",
+        "TIME": "BLUE",
+        "FILES": "LIGHTBLUE_EX",
+        "ERRORS": "LIGHTBLUE_EX",
+        "SKIPPED": "LIGHTBLUE_EX",
+        "CREATED": "LIGHTBLUE_EX",
+        "FOLDERS": "LIGHTBLUE_EX",
+        "WARNINGS": "BLUE",
+        "MODIFIED": "LIGHTBLUE_EX",
+        "REMAINING": "BLUE",
+        "LOGO": "LIGHTBLUE_EX",
+        "VIRTUAL_ENVIROMENT": "LIGHTBLUE_EX",
+        "TOTAL": "BLUE"
+
+    }
+}

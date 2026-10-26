@@ -1,6 +1,6 @@
 {
     "py": {
-        "standart":{
+        "full":{
             "folders_path": [
                 "src", 
                 "logs", 
@@ -28,10 +28,10 @@
                 "src/{NAME_OF_PROJECT}/main.py", 
                 "src/{NAME_OF_PROJECT}/config.py", 
                 "src/{NAME_OF_PROJECT}/__init__.py", 
-                "src/{NAME_OF_PROJECT}/utils/helpers.py",
-                "src/{NAME_OF_PROJECT}/utils/__init__.py",
                 "src/{NAME_OF_PROJECT}/users/api.py", 
                 "src/{NAME_OF_PROJECT}/users/models.py", 
+                "src/{NAME_OF_PROJECT}/utils/helpers.py",
+                "src/{NAME_OF_PROJECT}/utils/__init__.py",
                 "src/{NAME_OF_PROJECT}/users/__init__.py", 
                 "src/{NAME_OF_PROJECT}/users/services.py", 
                 "src/{NAME_OF_PROJECT}/products/models.py", 
@@ -39,6 +39,99 @@
                 "src/{NAME_OF_PROJECT}/products/services.py", 
                 "src/{NAME_OF_PROJECT}/database/__init__.py",
                 "src/{NAME_OF_PROJECT}/database/connection.py"
+            ]
+        },
+
+        "lib":{
+            "folders_path": [
+                "src", 
+                "logs", 
+                "configs",
+                "docs",
+                ".git",
+                "cache", 
+                "tests", 
+                "src/{NAME_OF_PROJECT}"
+            ],
+
+            "files_path": [
+                "LICENSE",
+                "README.md",
+                ".gitignore",
+                "docs/index.md",
+                "pyproject.toml",
+                "tests/__init__.py",
+                "tests/test_main.py",
+                "tests/test_utils.py",
+                "src/{NAME_OF_PROJECT}/main.py",
+                "src/{NAME_OF_PROJECT}/utils.py",
+                "src/{NAME_OF_PROJECT}/__init__.py"
+            ]
+        },
+
+        "desktop":{
+            "folders_path": [
+                "src", 
+                "logs", 
+                "docs",
+                ".git",
+                "cache",
+                "configs",
+                "tests", 
+                "src/{NAME_OF_PROJECT}", 
+                "src/{NAME_OF_PROJECT}/users", 
+                "src/{NAME_OF_PROJECT}/utils",
+                "src/{NAME_OF_PROJECT}/images", 
+                "src/{NAME_OF_PROJECT}/products",
+                "src/{NAME_OF_PROJECT}/database"
+            ],
+
+            "files_path": [
+                "LICENSE", 
+                "README.md", 
+                ".gitignore", 
+                "docs/index.md",
+                "pyproject.toml", 
+                "tests/__init__.py", 
+                "tests/test_users.py", 
+                "tests/test_utils.py", 
+                "tests/test_products.py", 
+                "tests/test_database.py", 
+                "src/{NAME_OF_PROJECT}/main.py", 
+                "src/{NAME_OF_PROJECT}/config.py", 
+                "src/{NAME_OF_PROJECT}/__init__.py", 
+                "src/{NAME_OF_PROJECT}/utils/helpers.py",
+                "src/{NAME_OF_PROJECT}/utils/__init__.py",
+                "src/{NAME_OF_PROJECT}/utils/fileutils.py", 
+                "src/{NAME_OF_PROJECT}/products/models.py", 
+                "src/{NAME_OF_PROJECT}/products/__init__.py", 
+                "src/{NAME_OF_PROJECT}/products/services.py", 
+                "src/{NAME_OF_PROJECT}/database/__init__.py",
+                "src/{NAME_OF_PROJECT}/database/connection.py"
+            ]
+        },
+        "minimal": {
+            "folders_path": [
+                "src", 
+                "logs", 
+                "docs",
+                ".git",
+                "configs",
+                "tests", 
+                "src/{NAME_OF_PROJECT}"
+            ],
+
+            "files_path": [
+                "LICENSE", 
+                "README.md", 
+                ".gitignore", 
+                "docs/index.md",
+                "pyproject.toml", 
+                "tests/__init__.py", 
+                "tests/test_main.py", 
+                "src/{NAME_OF_PROJECT}/main.py", 
+                "src/{NAME_OF_PROJECT}/config.py", 
+                "src/{NAME_OF_PROJECT}/__init__.py"
             ]
         }
     }

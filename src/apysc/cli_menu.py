@@ -1,10 +1,11 @@
 import os
+import runpy
 import time
 
 import keyboard
 from colorama import Fore, Style, init
 
-from .cli import build, open_cfg
+from .cli import build, open_cfg, clear_cache
 
 init(autoreset=True)
 
@@ -24,6 +25,7 @@ class CLI:
     MENU: tuple = (
         "Start",
         "Open config",
+        "Clear caches",
         "Exit"
     )
 
@@ -34,7 +36,6 @@ class CLI:
         self.controller()
 
     def menu_view(self) -> None:
-        # time.sleep(0.0001)
         menu = list(self.MENU)
 
         os.system("cls" if os.name == "nt" else "clear")
@@ -86,11 +87,15 @@ class CLI:
         if self.string_id == 0:
             print("Starting...")
             build() 
+            self.menu_view()
         elif self.string_id == 1:
             print("Opening...")
-            self.menu_view()
             open_cfg()
+            self.menu_view()
         elif self.string_id == 2:
+            print('Clear caches...')
+            clear_cache()
+        elif self.string_id == 3:
             print("Exiting...")
-            time.sleep(0.3)
-            quit()
+            time.sleep(0.1)
+            quit() 

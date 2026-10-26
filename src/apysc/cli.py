@@ -1,12 +1,17 @@
 from importlib.metadata import PackageNotFoundError, version
-
+import importlib
+import os
+import sys
+from pathlib import Path
+    
 import click
+import shutil
 
 def get_version():
     try:
         return version('apysc')
     except PackageNotFoundError:
-        return '0.0.4'
+        return '0.0.5'
 
 @click.group(invoke_without_command=True)
 @click.pass_context
@@ -22,18 +27,30 @@ def build():
     
     runpy.run_module("apysc", run_name="__main__", alter_sys=True)
 
-@cli.command(name='version', help='Show actual version of library: apysc version')
+@cli.command(name='version', help='Show actual version of library')
 def version_cmd():
     click.echo(get_version())
 
-@cli.command(name='open', help='Open file config: apysc open')
+@cli.command(name='clear-cache-project', help='Clear cache of project')
+def clear_cache():
+    start_path = Path()
+    caches: list = [path for path in start_path.rglob("__pycache__")]
+
+    if caches: print(f"Found {caches} cache files, delete it?")
+    else:
+        print('Not found caches')
+        return
+
+    confirm = input("Y/n ")
+    if confirm.lower().startswith('y'):
+        for path in sorted(caches, key=lambda p: len(p.parts), reverse=True):
+            if path.exists(): shutil.rmtree(path)
+        print(f'Sucefull deleted {len(caches)} cache files')
+    elif confirm.lower().startswith('n'): print(f'Canceled')
+
+@cli.command(name='open', help='Open file config')
 @click.option('-cfg', '--cfg', 'cfg_path', default='paths.py')
 def open_cfg(cfg_path):
-    import importlib
-    import os
-    import sys
-    from pathlib import Path
-    
     try:
         pkg = importlib.import_module("apysc")
         base_dir = Path(pkg.__file__).parent
