@@ -17,7 +17,7 @@ authors = [
 
 [project.urls]
 Homepage = "github.com/Pythofanoff"
-Repository = "github.com/Pythofanoff/apysc"
+Repository = "github.com/Pythofanoff/AutoPySC"
 
 [tool.setuptools]
 py-modules = ["cli", "PATHS"]
