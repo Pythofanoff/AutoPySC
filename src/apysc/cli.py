@@ -31,22 +31,22 @@ def build():
 def version_cmd():
     click.echo(get_version())
 
-@cli.command(name='clear-cache-project', help='Clear cache of project')
+@cli.command(name='clear-cache-project', help='Clearing project cache')
 def clear_cache():
     start_path = Path()
     caches: list = [path for path in start_path.rglob("__pycache__")]
 
-    if caches: print(f"Found {caches} cache files, delete it?")
+    if caches: print(f"{caches} caches found, delete them?")
     else:
-        print('Not found caches')
+        print("Caches not found")
         return
 
     confirm = input("Y/n ")
     if confirm.lower().startswith('y'):
         for path in sorted(caches, key=lambda p: len(p.parts), reverse=True):
             if path.exists(): shutil.rmtree(path)
-        print(f'Sucefull deleted {len(caches)} cache files')
-    elif confirm.lower().startswith('n'): print(f'Canceled')
+        print(f'{len(caches)} caches successfully deleted')
+    elif confirm.lower().startswith('n'): print(f'Cancel')
 
 @cli.command(name='open', help='Open file config')
 @click.option('-cfg', '--cfg', 'cfg_path', default='paths.py')

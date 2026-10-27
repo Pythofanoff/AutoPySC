@@ -3,36 +3,53 @@
 # <DESCRIPTION>
 
  **AutoPySC** or **Auto Python Structure Creator** -
- This is a **lightweight**, simple **library for creating a project tree**.
+ This is a **lightweight**, simple **tool for creating a project tree**.
 
- This library was originally written for my own small, private projects,
+ This tool was originally written for my own small, private projects,
 but I decided to keep it publicly available.
 Perhaps one day this small script will grow into something bigger.
 
 >[!Warning]
->**This library is still in the testing stage, problems are possible, please write about any errors in github issues** [Click](https://github.com/Pythofanoff/AutoPySC/issues)
+>**This tool is still in the testing stage, problems are possible, please write about any errors in github issues** [Click](https://github.com/Pythofanoff/AutoPySC/issues)
 
-## **Creates the following structure (.py, "full")**
+## **Creates the following structure (example .py, "minimal")**
 
 ``` txt
 MyProject
+│   .gitignore
+│   LICENSE
+│   pyproject.toml
+│   README.md
+│
 ├───.git
-├───cache
+├───configs
 ├───docs
+│       index.md
+│
 ├───logs
 ├───src
 │   └───my_project
-│       ├───database
-│       ├───images
-│       ├───products
-│       ├───users
-│       └───utils
+│           config.py
+│           main.py
+│           __init__.py
+│
 ├───tests
+│       test_main.py
+│       __init__.py
+│
 └───venv
+    │   pyvenv.cfg
+    │
     ├───Include
     ├───Lib
     │   └───site-packages
     └───Scripts
+            activate
+            activate.bat
+            Activate.ps1
+            deactivate.bat
+            python.exe
+            pythonw.exe
 ```
 
 ### <HOW TO LAUNCH?>
@@ -44,10 +61,10 @@ MyProject
 
 ### <OTHER COMMANDS?>
 
-`apysc version` - Show actual version for library; <br>
+`apysc version` - Show actual version tool; <br>
 `apysc clear-cache-project` - Clean up caches; <br>
-`apysc` - CLI-tool.
+`apysc` - TUI.
 
-**More information**: [Here](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
+### [**More information**](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
 
 **`<CODE BY PYTHOFANOFF>`**
