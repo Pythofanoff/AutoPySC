@@ -52,7 +52,7 @@ or: <br>
 
 1. Разархивировать zip в папку, открыть её;
 2. В терминале: **`cd AutoPySC`**;
-3. В терминале: **python -m pip install -e .`** (Точка в конце после -e обязательна) или использовать **`.\build.bat`**;
+3. В терминале: **`python -m pip install -e .`** (Точка в конце после -e обязательна) или использовать **`.\build.bat`**;
 4. После успеха появится надпись:
 `Successfully installed apysc-%version%` - где %version% - актуальная версия библиотеки.
 
@@ -66,9 +66,9 @@ or: <br>
 
 1) **`cd path/to/MyProject`** - С помощью команды перейдите в папку с вашим проектом, где он будет разворачиваться (если папки нету, нужно создать) где **"path/to/MyProject"** - подставить путь до папки проекта;
 2) **`apysc open`** - Открывает общий файл конфигурации; [Подробнее](#подробнее-о-файле-конфигурации)
-3) **`apysc build`** - Создаёт структуру проекту по конфигурации;
-4) **`apysc clear-cache-project`** - Удаляет файлы/папки кеша.
-4) **`apysc`** - Открывает CLI - инструмент (GUI интерфейс в терминале).
+3) **`apysc build`** - Создаёт структуру проекту по заданной конфигурации;
+4) **`apysc clear-cache-project`** - Удаляет файлы/папки кеша проекта (созданные python).
+4) **`apysc`** - Открывает TUI-инструмент (GUI интерфейс в терминале).
 
 # Отчёт о законченной работе
 
@@ -98,30 +98,36 @@ TOTAL - Счётчик общего количества файлов и пап�
 
 ## Подробнее о файле конфигурации
 
-**Файл конфигурации можно открыть командой `apysc open` или через CLI**.
+**Файл конфигурации можно открыть командой `apysc open` или через TUI**.
 
 ``` txt
-NAME_OF_PROJECT = 'MyProject'
-AUTHOR = 'DEV'
-VERSION = 'v0.0.1'
-DESCRIPTION = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
-LICENSE = 'MIT' 
-EMAIL = 'youremail@example.com'
-HOMEPAGE = f'https://github.com/{AUTHOR}'
-REPOSITORY = f'https://github.com/{AUTHOR}/{NAME_OF_PROJECT}'{AUTHOR}/{NAME_OF_PROJECT}'
+# ABOUT PROJECT
+NAME_OF_PROJECT: str = 'my_project' # DEFAULT = 'my_project'
+AUTHOR: str = 'Dev' # DEFAULT = 'Dev'
+VERSION: str = 'v0.0.1' # DEFAULT = 0.0.1
+DESCRIPTION: str = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}' # DEFAULT = f'{NAME_OF_PROJECT} {VERSION} by {AUTHOR}'
+LICENSE: str = 'MIT' # DEFAULT = 'MIT', 'ApacheLicenseVersion2', 'GNU'
+EMAIL: str = 'youremail@example.com' # DEFAULT = 'youremail@example.com'
+HOMEPAGE: str = f'https://github.com/{AUTHOR}' # DEFAULT = f'https://github.com/{AUTHOR}'
+REPOSITORY: str = f'https://github.com/{AUTHOR}/{NAME_OF_PROJECT}' # DEFAULT = f'https://github.com/{AUTHOR}/{NAME_OF_PROJECT}'
 
-LANGUAGE = 'py'
-VENV = 'pyvenv'
-ARCHITECTURE = 'standart'
+# MAIN
+LANGUAGE: str = 'py' # DEFAULT = 'py'
+VENV: str = 'pyvenv' # DEFAULT image.png= 'pyvenv'; 'poetry', 'none'
+ARCHITECTURE: str = 'minimal' # DEFAULT = 'minimal'; 'lib', 'desktop', 'full'
 
-REPLACE_EXISTS_FILE = False
-REPLACE_EXISTS_FOLDERS = False
-QUIET_LAUNCH = False
+# SPECIFIC
+REPLACE_EXISTS_FILE: bool = False # DEFAULT = False (0); True (1) 
+QUIET_LAUNCH: bool = False # DEFAULT = False (0); True (1) 
+
+# THEME
+THEME_PATH: str = 'themes.json' # DEFAULT = 'themes.json'
+THEME_CHOOSE: str = 'basic' # DEFAULT = 'basic'; 'bloody', 'night'
 ```
 
-**`NAME_OF_PROJECT = 'MyProject'`** - Параметр отвечает за название проекта, название будет участвовать в создании папки по пути `src/MyProject` и в запись информации о проекте в файл pyproject.toml, то что в кавычках - название проекта, `# DEFAULT =` - это комментарий, небольшое напоминание о том какое было название по умолчанию, его не стоит трогать, оно нигде не участвует, так же это будет касаться и других похожих комментариев. <br>
+**`NAME_OF_PROJECT = 'my_project'`** - Параметр отвечает за название проекта, название будет участвовать в создании папки по пути `src/MyProject` и в запись информации о проекте в файл pyproject.toml, то что в кавычках - название проекта, `# DEFAULT =` - это комментарий, небольшое напоминание о том какое было название по умолчанию, его не стоит трогать, оно нигде не участвует, так же это будет касаться и других похожих комментариев. <br>
 
-**`AUTHOR = 'DEV'`** - Параметр отвечает за имя/никнейм/псевдоним/произвище автора, и будет подставляться в файл LICENCE (правообладатель) и в файл pyproject.toml как создатель. <br>
+**`AUTHOR = 'Dev'`** - Параметр отвечает за имя/никнейм/псевдоним/произвище автора, и будет подставляться в файл LICENCE (правообладатель) и в файл pyproject.toml как создатель. <br>
 
 **`VERSION = 'v0.0.1'`** - Параметр отвечает за версию проекта, это версия подставится в файл pyproject.toml, и это начальная версия, позже по ходу работы над вашим проектом, вам нужно будет менять версию уже в pyproject.toml. <br>
 
@@ -150,7 +156,7 @@ QUIET_LAUNCH = False
 |full                      |Включает все типы проекта (Desktop, Web)|
 |lib                       |Структура проекта под библиотеку Python|
 |desktop                   |Структура под разработку десктоп приложений|
-|minimal                   |Структура под разработку десктоп приложений|
+|minimal                   |Минимальная структура под простой проект|
 
 ## Настройки которые лучше не менять
 
