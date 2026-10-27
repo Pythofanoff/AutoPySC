@@ -54,16 +54,16 @@ MyProject
 
 ### <HOW TO LAUNCH?>
 
-1) **In terminal**: `pip install apysc` or launch `build.bat`.
+1) **In terminal**: `pip install apysc` or launch `build.bat`;
 2) **In terminal**: `cd MyProject`;
-3) **Configure file** `PATH.PY` under the project: `apysc open`;
+3) **Configure file** `paths.py` under the project: `apysc open`;
 4) **In terminal**: `apysc build` or `python -m apysc build`.
 
 ### <OTHER COMMANDS?>
 
-`apysc` - TUI.
+`apysc` - TUI; <br>
 `apysc version` - Show actual version tool; <br>
-`apysc clear-cache-project` - Clean up caches; <br>
+`apysc clear-cache-project` - Clean up caches. <br>
 
 ### [**More information**](https://github.com/Pythofanoff/AutoPySC/blob/master/docs%2Fgetting-started.md)
 
