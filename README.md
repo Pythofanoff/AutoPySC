@@ -54,7 +54,7 @@ MyProject
 
 ### <HOW TO LAUNCH?>
 
-1) **In terminal**: `pip install apysc` or launch `**build.bat**`.
+1) **In terminal**: `pip install apysc` or launch `build.bat`.
 2) **In terminal**: `cd MyProject`;
 3) **Configure file** `PATH.PY` under the project: `apysc open`;
 4) **In terminal**: `apysc build` or `python -m apysc build`.
