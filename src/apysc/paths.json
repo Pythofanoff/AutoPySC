@@ -76,13 +76,11 @@
                 "docs",
                 ".git",
                 "cache",
-                "configs",
                 "tests", 
+                "configs",
                 "src/{NAME_OF_PROJECT}", 
-                "src/{NAME_OF_PROJECT}/users", 
                 "src/{NAME_OF_PROJECT}/utils",
                 "src/{NAME_OF_PROJECT}/images", 
-                "src/{NAME_OF_PROJECT}/products",
                 "src/{NAME_OF_PROJECT}/database"
             ],
 
@@ -102,10 +100,7 @@
                 "src/{NAME_OF_PROJECT}/__init__.py", 
                 "src/{NAME_OF_PROJECT}/utils/helpers.py",
                 "src/{NAME_OF_PROJECT}/utils/__init__.py",
-                "src/{NAME_OF_PROJECT}/utils/fileutils.py", 
-                "src/{NAME_OF_PROJECT}/products/models.py", 
-                "src/{NAME_OF_PROJECT}/products/__init__.py", 
-                "src/{NAME_OF_PROJECT}/products/services.py", 
+                "src/{NAME_OF_PROJECT}/utils/fileutils.py",
                 "src/{NAME_OF_PROJECT}/database/__init__.py",
                 "src/{NAME_OF_PROJECT}/database/connection.py"
             ]
@@ -116,8 +111,8 @@
                 "logs", 
                 "docs",
                 ".git",
-                "configs",
                 "tests", 
+                "configs",
                 "src/{NAME_OF_PROJECT}"
             ],
 

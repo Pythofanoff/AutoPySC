@@ -12,7 +12,7 @@ Perhaps one day this small script will grow into something bigger.
 >[!Warning]
 >**This tool is still in the testing stage, problems are possible, please write about any errors in github issues** [Click](https://github.com/Pythofanoff/AutoPySC/issues)
 
-## **Creates the following structure (example .py, "minimal")**
+## **Creates the following structure (example: .py, "minimal")**
 
 ``` txt
 MyProject
@@ -54,7 +54,7 @@ MyProject
 
 ### <HOW TO LAUNCH?>
 
-1) **In terminal**: `pip install apysc` or launch `build.bat`;
+1) **In terminal**: `pip install apysc` or launch auto-build `build.bat`;
 2) **In terminal**: `cd MyProject`;
 3) **Configure file** `paths.py` under the project: `apysc open`;
 4) **In terminal**: `apysc build` or `python -m apysc build`.

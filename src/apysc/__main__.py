@@ -5,6 +5,7 @@ import venv
 from datetime import datetime
 from pathlib import Path
 from importlib.metadata import version
+import timeit
 
 import toml
 from colorama import Fore, Style, init
@@ -181,7 +182,7 @@ class Builder:
 if __name__ == "__main__":
     sep = BASE_COLOR + "#" * 78
 
-    start = time.time() 
+    start = time.perf_counter()
     
     if not QUIET_LAUNCH:
         print(fr"""{LOGO}
@@ -194,8 +195,9 @@ _  ___ |  ____/_  / ____/ // /___
         print(f"{' '*29}{LOGO}v.{version('apysc')}\n")
     
     builder = Builder()
-
     
+    elapsed = time.perf_counter() - start
+
     if not QUIET_LAUNCH:
         print(fr"""{LOGO}
 _____________________   _____________________  __
@@ -206,11 +208,10 @@ _  __/   __/ /  _  /|  / __/ /  ____/ /_  __  /
     """) 
 
     width = 74
-    spent_time = round(time.time() - start, 3)
-    status = f"BUILD SUCCESSFUL in {spent_time}ms"
+    status = f"BUILD SUCCESSFUL in {elapsed:.3f}ms"
     colored_status = (
         f"{CREATED}BUILD SUCCESSFUL{Style.RESET_ALL} {BASE_COLOR}in "
-        f"{FOLDERS}{spent_time}ms{Style.RESET_ALL}"
+        f"{FOLDERS}{elapsed:.3f}ms{Style.RESET_ALL}"
     )
     print(f"\n{sep}\n{BASE_COLOR}# {colored_status}{' ' * (width - len(status))} {BASE_COLOR}#")
 

@@ -3,7 +3,7 @@ import importlib
 import os
 import sys
 from pathlib import Path
-    
+
 import click
 import shutil
 
@@ -33,20 +33,26 @@ def version_cmd():
 
 @cli.command(name='clear-cache-project', help='Clearing project cache')
 def clear_cache():
-    start_path = Path()
-    caches: list = [path for path in start_path.rglob("__pycache__")]
+    from colorama import Fore, init    
+    from .theme import CREATED, ERRORS, FOLDERS, BASE_COLOR, SKIPPED
+    
+    init(autoreset=True)
 
-    if caches: print(f"{caches} caches found, delete them?")
+    start_path = Path()
+    caches: list = [path for path in start_path.rglob("*cache*") if path.name != 'cache']
+
+    cache_path = '\n'.join(f'"{cache}",' for cache in caches)
+    if caches: print(f"{FOLDERS}{cache_path}\n{BASE_COLOR}Delete? ({CREATED}Yes{Fore.RESET}/{SKIPPED}No{Fore.RESET})")
     else:
-        print("Caches not found")
+        print(f"{ERRORS}Caches not found")
         return
 
-    confirm = input("Y/n ")
+    confirm = input()
     if confirm.lower().startswith('y'):
         for path in sorted(caches, key=lambda p: len(p.parts), reverse=True):
             if path.exists(): shutil.rmtree(path)
-        print(f'{len(caches)} caches successfully deleted')
-    elif confirm.lower().startswith('n'): print(f'Cancel')
+        print(f'{len(caches)} {FOLDERS}caches {CREATED}successfully deleted')
+    else: print(f'{SKIPPED}Cancel')
 
 @cli.command(name='open', help='Open file config')
 @click.option('-cfg', '--cfg', 'cfg_path', default='paths.py')
